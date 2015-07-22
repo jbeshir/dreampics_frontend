@@ -1,0 +1,23 @@
+<html>
+	<head>
+		{{if .ShowOutputImage}}
+		{{else}}
+			<!-- Automatically refresh, so the job can be seen to finish. -->
+			<meta http-equiv="refresh" content="5" >
+		{{end}}
+	</head>
+	<body>
+		<h2>Status</h2>
+		<p>{{.StatusDescription}}</p>
+		{{if .ShowInputImage}}
+			<h2>Input</h2>
+			<img src="/job/input/{{.JobID}}" />
+		{{end}}
+			<h2>Output</h2>
+		{{if .ShowOutputImage}}
+			<img src="/job/output/{{.JobID}}" />
+		{{else}}
+			<p>This page will update regularly and show output here when done.</p>
+		{{end}}
+	</body>
+</html>

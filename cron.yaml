@@ -1,0 +1,4 @@
+cron:
+- description: Shut down idle dreamservers.
+  url: /job/cron/shrink_pool
+  schedule: every 5 minutes synchronized
