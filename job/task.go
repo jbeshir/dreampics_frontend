@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 
 	"appengine"
@@ -63,7 +64,8 @@ func (s *State) doTask(c appengine.Context, task Task, taskState *taskState) (er
 				resp.Body.Close()
 				taskState.LivenessChecked = true
 				taskState.LivenessCheckSuccess = true
-				taskState.LivenessCheckPublicIP = resp.Request.URL.Host
+				taskState.LivenessCheckPublicIP = strings.Split(
+					resp.Request.URL.Host, ":")[0]
 				break
 			}
 		}
